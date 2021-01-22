@@ -14,7 +14,7 @@ class Player {
 			
 			if(Boolean(data)) {
 				
-				return data.split('\n').map(d => d.split(' #'))
+				return data.split('\n')
 
 			} else {
 				return false
@@ -31,7 +31,18 @@ class Player {
 	play() {
 		const ll = new LinkedList(this.playlist)
 
-		console.log(ll)
+		let tail = ll.head
+
+
+		setInterval(() => {
+		
+			let [ songName, duration ] = tail.data.split(' #')
+		
+			console.log(songName)
+		
+			tail = tail.next
+		
+		}, Number(2) * 1000)
 	}
 
 }
