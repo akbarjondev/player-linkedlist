@@ -19,11 +19,13 @@ class LinkedList {
 	#size = 0
 	#array = []
 
-	constructor(array) {
+	constructor(array = []) {
 		this.head = null
 		this.tail = null
 
-		this.#array = [...this.#array, ...array] 
+		this.#array = [...this.#array, ...array].forEach(d => {
+			this.insert(d)
+		})
 	}
 
 	from(arr) {
@@ -63,6 +65,10 @@ class LinkedList {
 		}
 		
 		this.#size++
+	}
+
+	get getDataBase() {
+		return this.#array
 	}
 
 	[Symbol.iterator]() {
