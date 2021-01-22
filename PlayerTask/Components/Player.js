@@ -1,4 +1,5 @@
 const { IO } = require('./IO')
+const { LinkedList } = require('./LinkedList')
 
 
 class Player {
@@ -28,15 +29,9 @@ class Player {
 	}
 
 	play() {
-		
-		console.log('START')
-		this.playlist.forEach(song => {
-			console.log(song[0])
-			setTimeout(() => {
+		const ll = new LinkedList(this.playlist)
 
-			}, )
-		})
-		console.log('END')
+		console.log(ll)
 	}
 
 }
