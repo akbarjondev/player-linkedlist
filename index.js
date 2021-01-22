@@ -1,7 +1,12 @@
 const { LinkedList } = require('./LinkedList')
 
-const ll = new LinkedList()
+const ll = new LinkedList(['A', 'B', 'C'])
 
-ll.insert('A')
+// ll.insert('1')
+// ll.insert('2')
 
-console.log(ll)
+ll.from(['X', 'Y', 'Z'])
+
+for(let d of ll) {
+	console.log(d)
+}

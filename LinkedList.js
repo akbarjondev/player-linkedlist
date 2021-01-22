@@ -16,10 +16,22 @@ class LinkedList {
 
 	head
 	tail
+	#size = 0
+	#array = []
 
-	constructor() {
+	constructor(array) {
 		this.head = null
 		this.tail = null
+
+		this.#array = [...this.#array, ...array] 
+	}
+
+	from(arr) {
+		[...this.#array, ...arr].forEach(d => {
+			this.insert(d)
+		})
+
+		return this
 	}
 
 	insert(data) {
@@ -37,9 +49,42 @@ class LinkedList {
 			this.tail.prev = this.head
 		} else {
 
-		}
+			let head = this.head // A
+			let tail = this.tail // A
 
+			this.tail = node // A -> B
+
+			head.prev = node // A.prev = B
+			tail.next = node // A.next = B
+
+			this.tail.prev = tail // B.prev = A
+			this.tail.next = head // B.next = A
+
+		}
+		
+		this.#size++
 	}
+
+	[Symbol.iterator]() {
+		let from = 0
+		let to = this.#size
+
+		let last = this.head.prev
+
+		return {
+			next: () => {
+
+				last = last.next
+
+				return {
+					value: last.data,
+					done: from++ >= to
+				}
+
+			}
+		}
+	}
+
 }
 
 module.exports.LinkedList = LinkedList
