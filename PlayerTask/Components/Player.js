@@ -28,23 +28,33 @@ class Player {
 		this.playlist = array
 	}
 
+	sleep(delay) {
+		let start = new Date().getTime()
+		while(new Date().getTime() < start + (Number(delay) * 1000));
+	}
+
 	play() {
 		const ll = new LinkedList(this.playlist)
 
 		let tail = ll.head
+		let count = 0, songName, duration
 
+		console.log('START')
 
-		setInterval(() => {
-		
-			let [ songName, duration ] = tail.data.split(' #')
-		
-			console.log(songName)
-		
+		while(count < ll.getSize ) {
+
+			[ songName, duration ] = tail.data.split(' #')
+
+			console.log(songName + ' -> ' + duration)
+
 			tail = tail.next
-		
-		}, Number(2) * 1000)
-	}
+			
+			this.sleep(duration)
+			count++
+		}
 
+		console.log('END')
+	}
 }
 
 module.exports.Player = Player
