@@ -50,6 +50,7 @@ class Player {
 			tail = tail.next
 			
 			this.sleep(duration)
+			
 			count++
 		}
 
