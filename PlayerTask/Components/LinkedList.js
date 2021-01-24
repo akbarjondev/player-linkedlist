@@ -71,6 +71,10 @@ class LinkedList {
 		return this.#array
 	}
 
+	get getSize() {
+		return this.#size
+	}
+
 	[Symbol.iterator]() {
 		let from = 0
 		let to = this.#size
